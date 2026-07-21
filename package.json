@@ -1,0 +1,78 @@
+{
+  "name": "@omnixys/grpc",
+  "version": "1.0.0",
+  "type": "module",
+  "private": false,
+  "packageManager": "pnpm@10.33.0",
+  "description": "gRPC infrastructure module for Omnixys microservices — proto definitions, client/server modules, interceptors, and types",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "proto"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./clients": {
+      "types": "./dist/clients/index.d.ts",
+      "import": "./dist/clients/index.js"
+    },
+    "./servers": {
+      "types": "./dist/servers/index.d.ts",
+      "import": "./dist/servers/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js"
+    },
+    "./proto": {
+      "import": "./dist/proto/user.proto",
+      "default": "./dist/proto/user.proto"
+    },
+    "./proto/*": {
+      "default": "./dist/proto/*"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "prebuild": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "cp -r src/proto dist/proto",
+    "test": "pnpm run build && node --test test/*.test.mjs",
+    "clean": "rimraf dist",
+    "dev": "tsc -w",
+    "link": "pnpm link --global"
+  },
+  "keywords": [
+    "omnixys",
+    "grpc",
+    "microservices"
+  ],
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.3",
+    "@grpc/proto-loader": "^0.7.13",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^11.1.27",
+    "@nestjs/core": "^11.1.17",
+    "@nestjs/microservices": "^11.1.27",
+    "@types/node": "^25.6.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.1.17",
+    "@nestjs/microservices": "^11.1.27",
+    "@omnixys/context": "^3.0.0",
+    "@omnixys/logger": "^3.0.0",
+    "@omnixys/observability": "^3.0.0"
+  }
+}

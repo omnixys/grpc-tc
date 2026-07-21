@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package omnixys.user;
+
+option java_package = "com.omnixys.grpc.user";
+option java_multiple_files = true;
+
+service UserService {
+  rpc GetUsersByIds (GetUsersByIdsRequest) returns (GetUsersByIdsResponse);
+}
+
+message GetUsersByIdsRequest {
+  repeated string ids = 1;
+}
+
+message GetUsersByIdsResponse {
+  repeated UserProjection users = 1;
+}
+
+message UserProjection {
+  string id = 1;
+  string username = 2;
+  optional string display_name = 3;
+  optional string first_name = 4;
+  optional string last_name = 5;
+  optional string email = 6;
+  optional string primary_phone = 7;
+  optional string avatar_url = 8;
+  optional string locale = 9;
+}
