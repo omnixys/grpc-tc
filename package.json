@@ -46,7 +46,7 @@
     "test": "pnpm run build && node --test test/*.test.mjs",
     "clean": "rimraf dist",
     "dev": "tsc -w",
-      "release": "semantic-release",
+    "release": "semantic-release",
     "link": "pnpm link --global"
   },
   "keywords": [
@@ -66,14 +66,14 @@
     "@nestjs/microservices": "^11.1.27",
     "@types/node": "^25.6.0",
     "rimraf": "^6.0.1",
-        "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.6",
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.0",
-        "semantic-release": "^25.0.3",
-            "@commitlint/cli": "^20.5.0",
+    "semantic-release": "^25.0.3",
+    "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.4.2",
     "typescript": "^5.9.3"
   },
