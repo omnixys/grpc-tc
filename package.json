@@ -46,6 +46,7 @@
     "test": "pnpm run build && node --test test/*.test.mjs",
     "clean": "rimraf dist",
     "dev": "tsc -w",
+      "release": "semantic-release",
     "link": "pnpm link --global"
   },
   "keywords": [
