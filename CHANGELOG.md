@@ -3,6 +3,12 @@
 All notable changes in this project will be documented in this file.
 
 
+## [1.0.1](https://github.com/omnixys/grpc/compare/v1.0.0...v1.0.1) (2026-07-23)
+
+### Deps
+
+* **Deps:** update logger+observability deps version ([](https://github.com/omnixys/grpc/commit/4fa500aa79cad2ebe0ca587244f9159c298658df))
+
 ## 1.0.0 (2026-07-21)
 
 ### Action
