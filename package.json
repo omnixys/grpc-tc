@@ -1,5 +1,5 @@
 {
-  "name": "@omnixys/grpc",
+  "name": "@omnixys/grpc-ts",
   "version": "1.0.2",
   "type": "module",
   "private": false,
