@@ -3,6 +3,12 @@
 All notable changes in this project will be documented in this file.
 
 
+## [1.0.5](https://github.com/omnixys/grpc-ts/compare/v1.0.4...v1.0.5) (2026-07-30)
+
+### Deps
+
+* **Deps:** fix imports ([](https://github.com/omnixys/grpc-ts/commit/40e7fa6d6936ee843cfd2735ec45db8942fe1496))
+
 ## [1.0.4](https://github.com/omnixys/grpc-tc/compare/v1.0.3...v1.0.4) (2026-07-30)
 
 ### Deps
