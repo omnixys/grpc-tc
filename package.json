@@ -81,8 +81,8 @@
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.1.17",
     "@nestjs/microservices": "^11.1.27",
-    "@omnixys/context": "^3.0.0",
-    "@omnixys/logger": "^3.0.0",
-    "@omnixys/observability": "^3.0.0"
+    "@omnixys/context-ts": "^3.0.2",
+    "@omnixys/logger-ts": "^3.2.1",
+    "@omnixys/observability-ts": "^3.2.1"
   }
 }
