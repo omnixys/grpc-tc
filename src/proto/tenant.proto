@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package omnixys.tenant;
+
+option java_package = "com.omnixys.grpc.tenant";
+option java_multiple_files = true;
+
+service TenantService {
+  rpc GetTenant (GetTenantRequest) returns (GetTenantResponse);
+  rpc ValidateMembership (ValidateMembershipRequest) returns (ValidateMembershipResponse);
+  rpc ListUserTenants (ListUserTenantsRequest) returns (ListUserTenantsResponse);
+  rpc CreateMembership (CreateMembershipRequest) returns (CreateMembershipResponse);
+  rpc UpdateMembershipStatus (UpdateMembershipStatusRequest) returns (UpdateMembershipStatusResponse);
+  rpc RevokeMembership (RevokeMembershipRequest) returns (RevokeMembershipResponse);
+}
+
+enum TenantStatus {
+  TENANT_STATUS_UNSPECIFIED = 0;
+  ACTIVE = 1;
+  SUSPENDED = 2;
+  DISABLED = 3;
+  ARCHIVED = 4;
+}
+
+enum MembershipRole {
+  MEMBERSHIP_ROLE_UNSPECIFIED = 0;
+  OWNER = 1;
+  ADMIN = 2;
+  MEMBER = 3;
+  GUEST = 4;
+}
+
+enum MembershipStatus {
+  MEMBERSHIP_STATUS_UNSPECIFIED = 0;
+  ACTIVE = 1;
+  INVITED = 2;
+  SUSPENDED = 3;
+  REVOKED = 4;
+}
+
+message GetTenantRequest {
+  string id = 1;
+}
+
+message GetTenantResponse {
+  Tenant tenant = 1;
+}
+
+message ValidateMembershipRequest {
+  string tenant_id = 1;
+  string user_id = 2;
+}
+
+message ValidateMembershipResponse {
+  bool tenant_exists = 1;
+  bool tenant_active = 2;
+  bool membership_exists = 3;
+  bool membership_active = 4;
+  MembershipRole role = 5;
+  string reason = 6;
+}
+
+message ListUserTenantsRequest {
+  string user_id = 1;
+}
+
+message ListUserTenantsResponse {
+  repeated TenantMembership memberships = 1;
+}
+
+message CreateMembershipRequest {
+  string tenant_id = 1;
+  string user_id = 2;
+  MembershipRole role = 3;
+  MembershipStatus status = 4;
+  string created_by = 5;
+}
+
+message CreateMembershipResponse {
+  TenantMembership membership = 1;
+  bool created = 2;
+}
+
+message UpdateMembershipStatusRequest {
+  string tenant_id = 1;
+  string user_id = 2;
+  MembershipStatus status = 3;
+  string updated_by = 4;
+}
+
+message UpdateMembershipStatusResponse {
+  TenantMembership membership = 1;
+}
+
+message RevokeMembershipRequest {
+  string tenant_id = 1;
+  string user_id = 2;
+  string updated_by = 3;
+}
+
+message RevokeMembershipResponse {
+  TenantMembership membership = 1;
+}
+
+message Tenant {
+  string id = 1;
+  string name = 2;
+  string slug = 3;
+  TenantStatus status = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message TenantMembership {
+  string tenant_id = 1;
+  string user_id = 2;
+  MembershipRole role = 3;
+  MembershipStatus status = 4;
+  string created_by = 5;
+  string created_at = 6;
+  string updated_by = 7;
+  string updated_at = 8;
+  optional string deleted_by = 9;
+  optional string deleted_at = 10;
+}
