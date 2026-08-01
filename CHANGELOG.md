@@ -3,6 +3,21 @@
 All notable changes in this project will be documented in this file.
 
 
+## [1.1.0](https://github.com/omnixys/grpc-ts/compare/v1.0.5...v1.1.0) (2026-08-01)
+
+### Deps
+
+* **Deps:** update omnixs package deps ([](https://github.com/omnixys/grpc-ts/commit/abdf47e272efcfd64a152e21dcc2771e2f7fc568))
+
+### Grpc
+
+* **Grpc:** add CreateTenant, UpdateTenant, DeleteTenant, ListTenants RPCs ([](https://github.com/omnixys/grpc-ts/commit/08a28bddfdd8641099a184bc8faf203ea2c00cff))
+* **Grpc:** support custom client token in GrpcClientModule ([](https://github.com/omnixys/grpc-ts/commit/0d762ceeded960d37a7540063e75ec8c9a3749c7))
+
+### Tenant
+
+* **Tenant:** add tenant gRPC proto and types ([](https://github.com/omnixys/grpc-ts/commit/38447f0ea8b2652890ea695a4d3aae9d9054259b))
+
 ## [1.0.5](https://github.com/omnixys/grpc-ts/compare/v1.0.4...v1.0.5) (2026-07-30)
 
 ### Deps
