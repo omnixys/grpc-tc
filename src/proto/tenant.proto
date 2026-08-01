@@ -9,6 +9,10 @@ service TenantService {
   rpc GetTenant (GetTenantRequest) returns (GetTenantResponse);
   rpc ValidateMembership (ValidateMembershipRequest) returns (ValidateMembershipResponse);
   rpc ListUserTenants (ListUserTenantsRequest) returns (ListUserTenantsResponse);
+  rpc CreateTenant (CreateTenantRequest) returns (CreateTenantResponse);
+  rpc UpdateTenant (UpdateTenantRequest) returns (UpdateTenantResponse);
+  rpc DeleteTenant (DeleteTenantRequest) returns (DeleteTenantResponse);
+  rpc ListTenants (ListTenantsRequest) returns (ListTenantsResponse);
   rpc CreateMembership (CreateMembershipRequest) returns (CreateMembershipResponse);
   rpc UpdateMembershipStatus (UpdateMembershipStatusRequest) returns (UpdateMembershipStatusResponse);
   rpc RevokeMembership (RevokeMembershipRequest) returns (RevokeMembershipResponse);
@@ -100,6 +104,45 @@ message RevokeMembershipRequest {
 
 message RevokeMembershipResponse {
   TenantMembership membership = 1;
+}
+
+message CreateTenantRequest {
+  string name = 1;
+  string slug = 2;
+  string created_by = 3;
+}
+
+message CreateTenantResponse {
+  Tenant tenant = 1;
+}
+
+message UpdateTenantRequest {
+  string id = 1;
+  string name = 2;
+  string slug = 3;
+  TenantStatus status = 4;
+  string updated_by = 5;
+}
+
+message UpdateTenantResponse {
+  Tenant tenant = 1;
+}
+
+message DeleteTenantRequest {
+  string id = 1;
+  string updated_by = 2;
+}
+
+message DeleteTenantResponse {
+  bool deleted = 1;
+}
+
+message ListTenantsRequest {
+  TenantStatus status = 1;
+}
+
+message ListTenantsResponse {
+  repeated Tenant tenants = 1;
 }
 
 message Tenant {
