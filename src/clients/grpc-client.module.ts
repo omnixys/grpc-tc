@@ -12,12 +12,15 @@ export interface GrpcClientOptions {
 @Global()
 @Module({})
 export class GrpcClientModule {
-  static register(options: GrpcClientOptions): DynamicModule {
+  static register(
+    options: GrpcClientOptions,
+    token: string = 'GRPC_CLIENT',
+  ): DynamicModule {
     return {
       module: GrpcClientModule,
       providers: [
         {
-          provide: 'GRPC_CLIENT',
+          provide: token,
           useFactory: (): ClientGrpc => {
             return ClientProxyFactory.create({
               transport: Transport.GRPC,
@@ -37,7 +40,7 @@ export class GrpcClientModule {
           },
         },
       ],
-      exports: ['GRPC_CLIENT'],
+      exports: [token],
     };
   }
 }
